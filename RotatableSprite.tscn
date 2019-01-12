@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://RotatableSprite.gd" type="Script" id=1]
+[ext_resource path="res://Shaders/isometric.shader" type="Shader" id=2]
+[ext_resource path="res://VoxelData/chr_knight_2_noshadow.png" type="Texture" id=3]
+[ext_resource path="res://iso_render_helper.gd" type="Script" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+
+resource_local_to_scene = true
+shader = ExtResource( 2 )
+shader_param/start_from_top = null
+shader_param/rect_size = Vector2( 80, 122 )
+shader_param/model_height = 20
+shader_param/has_shadow = null
+shader_param/rotation = 3.14159
+shader_param/tile_pixels_x = null
+shader_param/tile_pixels_y = null
+shader_param/ppv = 4.0
+shader_param/layers = ExtResource( 3 )
+
+[node name="RotatableSprite" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_left = -40.0
+margin_top = -100.0
+margin_right = 40.0
+margin_bottom = 22.0
+script = ExtResource( 4 )
+vox_layer_texture = ExtResource( 3 )
+model_height = 20
+model_rotation_degrees = 180.0
+centre_voxel = Vector3( 10, 11, 0 )
+ppv = 4.0
+
